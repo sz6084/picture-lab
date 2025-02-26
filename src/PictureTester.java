@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class PictureTester {
 
 	private static final double MAX_WID = 1200;
-  
 
 	/**
 	 * Main method for testing. Every class can have a main method in Java
@@ -22,8 +21,8 @@ public class PictureTester {
 		 * You will write the methods that do the following
 		 * 
 		 */
-		 // testZeroBlue();
-		testKeepOnlyBlue();
+		// testZeroBlue();
+		//testKeepOnlyBlue();
 		// testKeepOnlyRed();
 		// testKeepOnlyGreen();
 		// testNegate();
@@ -42,7 +41,7 @@ public class PictureTester {
 		// testChromakey();
 		// testEncodeAndDecode(); // use png, gif or bmp because of compression
 		// testGetCountRedOverValue(250);
-		// testSetRedToHalfValueInTopHalf();
+		 testSetRedToHalfValueInTopHalf();
 		// testClearBlueOverValue(200);
 		// Color avgColor = testGetAverageForColumn(pic, col);// specified column
 		// testDiagonal();
@@ -53,8 +52,8 @@ public class PictureTester {
 	private static void testPixelate() {
 		// opens the image so that it can be manipulated
 
-		Picture beach = new Picture("beach.jpg");
-    beach.explore();// shows the picture in a window
+		Picture beach = new Picture("images/scenic.jpg");
+		beach.explore();// shows the picture in a window
 		beach.pixelate();
 
 		// shows the current version of the pic in a new window
@@ -64,40 +63,37 @@ public class PictureTester {
 	private static void testQuads() {
 
 		// opens the image so that it can be manipulated
-		Picture mrH = new Picture("beach.jpg");
+		Picture mrH = new Picture("images/scenic.jpg");
 		double sclF = MAX_WID / mrH.getWidth();
 		mrH = mrH.scale(sclF, sclF);
 		mrH.explore();// shows the picture in a window before
 
-		
 		// shows the current version of the pic in a new window
-		//mrH.explore();
+		// mrH.explore();
 	}
 
 	private static void testDiagonal() {
 		// opens the image so that it can be manipulated
-		Picture mrH = new Picture("beach.jpg");
+		Picture mrH = new Picture("images/scenic.jpg");
 		// Pictures taken on a phone tend to be very large
 		// sometimes too large for the Picture class
 		// so I have scaled the one's that are too big
-		if(mrH.getWidth() > MAX_WID){
+		if (mrH.getWidth() > MAX_WID) {
 			double sclF = MAX_WID / mrH.getWidth();
 			mrH = mrH.scale(sclF, sclF);
 		}
-		
+
 		mrH.explore();// shows the picture in a window before
-		
 
 		// shows the current version of the pic in a new window
-		//mrH.explore();
+		// mrH.explore();
 	}
 
 	/** Method to test zeroBlue */
 	public static void testZeroBlue() {
 		// opens the image so that it can be manipulated
-		 Picture beach = new Picture("beach.jpg");
-		 beach.explore();// shows the picture in a window before
-     
+		Picture beach = new Picture("images/scenic.jpg");
+		beach.explore();// shows the picture in a window before
 
 		// shows the current version of the pic in a new window
 		beach.explore();
@@ -106,26 +102,42 @@ public class PictureTester {
 	private static void testKeepOnlyBlue() {
 		// should get a fairly blue pic
 		// this method will look a lot like testZeroBlue method
-		Picture beach = new Picture("beach.jpg");// You would change the var name and file name to your picture when you are testing your image.
-    Picture sBeach = beach.scale(0.5,0.5);// scales the size down if you need to resize.
-    sBeach.write("sBeach.jpg");
-    //Code below is necessary to make your image smaller if you took it from your camera.
-  
-    
+		Picture beach = new Picture("images/selfie.jpg");// You would change the var name and file name to your picture when you are testing your image.
+		Picture sBeach = beach.scale(0.5, 0.5);// scales the size down if you need to resize.
+		sBeach.write("simages/selfie.jpg");
+		// Code below is necessary to make your image smaller if you took it from your
+		// camera.
+
 		sBeach.explore();// shows the picture in a window
 		sBeach.keepOnlyBlue();// Calls your keep only blue method
-		sBeach.explore();//shows a new picture with only blue hues
+		sBeach.explore();// shows a new picture with only blue hues
 
 	}
 
 	private static void testKeepOnlyGreen() {
-		// pretty obvious...
+		Picture beach = new Picture("images/scenic.jpg");// You would change the var name and file name to your picture when you are testing your image.
+		Picture sBeach = beach.scale(0.5, 0.5);// scales the size down if you need to resize.
+		sBeach.write("simages/scenic.jpg");
+		// Code below is necessary to make your image smaller if you took it from your
+		// camera.
+
+		sBeach.explore();// shows the picture in a window
+		sBeach.keepOnlyGreen();// Calls your keep only green method
+		sBeach.explore();// shows a new picture with only green hues
 
 	}
 
 	private static void testKeepOnlyRed() {
 		// turns the pic quite red
+		Picture beach = new Picture("images/selfie.jpg");// You would change the var name and file name to your picture when you are testing your image.
+		Picture sBeach = beach.scale(0.5, 0.5);// scales the size down if you need to resize.
+		sBeach.write("simages/selfie.jpg");
+		// Code below is necessary to make your image smaller if you took it from your
+		// camera.
 
+		sBeach.explore();// shows the picture in a window
+		sBeach.keepOnlyRed();// Calls your keep only red method
+		sBeach.explore();// shows a new picture with only red hues
 	}
 
 	/**
@@ -134,10 +146,15 @@ public class PictureTester {
 	 * used often, we can write these algorithms in this class.
 	 */
 	private static void testNegate() {
-		Picture swan = new Picture("swan.jpg");
+		Picture selfie = new Picture("images/selfie.jpg");
+		Picture scenic = new Picture("images/scenic.jpg");
 		// write this in Picture class
-		swan.negate();
-		swan.explore();
+		selfie.explore();
+		selfie.negate();
+		selfie.explore();
+		scenic.explore();
+		scenic.negate();
+		scenic.explore();
 
 	}
 
@@ -148,6 +165,7 @@ public class PictureTester {
 	private static void testGrayscale() {
 		Picture swan = new Picture("swan.jpg");
 		// write this method in Picture class
+		//swan.explore(); // before
 		swan.grayScale();
 		swan.explore();
 
@@ -159,6 +177,7 @@ public class PictureTester {
 		Picture swan = new Picture("swan.jpg");
 
 		// written in Picture class
+		swan.explore();
 		swan.edgeDetection(10);// bigger number means fewer edges
 		swan.explore();
 		swan.write("swan outline.jpg");// writes the new picture to a new file
@@ -238,7 +257,11 @@ public class PictureTester {
 	// goes to each pixel in the top half and cuts the red component in half
 	// So, bottom half of pic should look normal
 	private static void testSetRedToHalfValueInTopHalf() {
-
+		Picture selfie = new Picture("images/selfie.jpg");
+		selfie.explore();
+		selfie.setRedToHalfValueInTopHalf();
+		selfie.explore();
+		selfie.write("selfie redToHalfValueInTopHalf.jpg");// writes the new picture to a new file
 	}
 
 	// displays the number of pixels in the pic that have a red component
@@ -262,41 +285,42 @@ public class PictureTester {
 	private static void testEncodeAndDecode() {
 
 		Picture moto = new Picture("blueMotorcycle.jpg"),
-		        message = new Picture("msg3.PNG");
+				message = new Picture("msg3.PNG");
 		moto.explore();
 		message.explore();
-		
+
 		normalize(moto);// set all red components to even vals
-		
+
 		// superimpose message onto moto by changing all pixels
 		// that are part of the message to have odd red component
 		hide(moto, message);
 
 		moto.explore();// moto should look pretty much the same
-		
-		// traverse each pixel.  If it has a red component that is 
+
+		// traverse each pixel. If it has a red component that is
 		// odd, set color of the pixel to BLACK, otherwise WHITE
 		decode(moto).explore();
 	}
 
 	private static SimplePicture decode(Picture moto) {
 		Picture pic = new Picture(moto);// makes a clone of moto
-		
+
 		return pic;
 	}
 
 	private static void hide(Picture pic, Picture msg) {
 		Pixel[][] img = pic.getPixels2D(), msgp = msg.getPixels2D();
-		
 
 	}
+
 	/**
 	 * Sets the red component of every pixel to an even number
 	 * by subtracting by 1 if it is odd.
+	 * 
 	 * @param moto
 	 */
 	private static void normalize(Picture moto) {
-		
+
 	}
 
 	/**
@@ -306,8 +330,8 @@ public class PictureTester {
 	 */
 
 	private static void testChromakey() {
-		Picture background = new Picture("butterfly1.jpg"), 
-		        foreground = new Picture("spidey.jpg");
+		Picture background = new Picture("butterfly1.jpg"),
+				foreground = new Picture("spidey.jpg");
 
 		foreground = foreground.scale(.3, .3);
 		// foreground.copy(foreground, 0, 100);
