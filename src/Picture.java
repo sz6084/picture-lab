@@ -223,7 +223,7 @@ public class Picture extends SimplePicture {
 
     /**
      * Method to show large changes in color
-     * This method traverses this picture and changes to pixels to
+     * This method traverses this picture and changes pixels to
      * black and white, depending on the color to each pixel's right.
      * If the color change is large, then the pixel on the left is set to
      * black, otherwise, if the color is close, then the pixel is set to
