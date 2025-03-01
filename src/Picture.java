@@ -273,10 +273,10 @@ public class Picture extends SimplePicture {
     public void setRedToHalfValueInTopHalf() {
         Pixel[][] pixels = this.getPixels2D(); // Defines new Pixel 2D array and gets the 2D array
         Pixel pixel = null; // defines Pixel variable initially as null
-        for (int row = 0; row < pixels.length/2; row++) { // loops through Pixel rows
+        for (int row = 0; row < pixels.length / 2; row++) { // loops through Pixel rows
             for (int col = 0; col < pixels[0].length; col++) { // loops through Pixel columns
                 pixel = pixels[row][col]; // sets the pixel to the current array element
-                pixel.setRed(pixel.getRed()/2);
+                pixel.setRed(pixel.getRed() / 2);
             } // ends inner for loop
         } // ends outer for loop
     }
@@ -284,14 +284,36 @@ public class Picture extends SimplePicture {
     public void clearBlueOverValue(int i) {
         Pixel[][] pixels = this.getPixels2D(); // Defines new Pixel 2D array and gets the 2D array
         Pixel pixel = null; // defines Pixel variable initially as null
-        for (int row = 0; row < pixels.length/2; row++) { // loops through Pixel rows
+        for (int row = 0; row < pixels.length / 2; row++) { // loops through Pixel rows
             for (int col = 0; col < pixels[0].length; col++) { // loops through Pixel columns
                 pixel = pixels[row][col]; // sets the pixel to the current array element
-                if(pixel.getBlue()>i) {
+                if (pixel.getBlue() > i) {
                     pixel.setBlue(0);
                 }
             } // ends inner for loop
         } // ends outer for loop
+    }
+
+    /** Method to enhance an underwater picture */
+    public void fixUnderwater() {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels) {
+            for (Pixel pixelObj : rowArray) {
+                // Increase red to compensate for underwater color loss
+                int newRed = pixelObj.getRed() * 2;
+                if (newRed > 255)
+                    newRed = 255; // Ensure it doesn't exceed 255
+
+                // Reduce blue and green to balance color distortion
+                int newGreen = (int) (pixelObj.getGreen() * 0.7);
+                int newBlue = (int) (pixelObj.getBlue() * 0.6);
+
+                pixelObj.setRed(newRed);
+                pixelObj.setGreen(newGreen);
+                pixelObj.setBlue(newBlue);
+            }
+        }
+
     }
 
 } // this } is the end of class Picture, put all new methods before this

@@ -28,7 +28,7 @@ public class PictureTester {
 		// testGrayscale();
 		// testEdgeDetection();
 		// testFaceDetect();
-		// testFixUnderwater();
+		 testFixUnderwater();
 		// testMirrorVertical();
 		// testMirrorTemple();
 		// testMirrorArms();
@@ -41,7 +41,7 @@ public class PictureTester {
 		// testEncodeAndDecode(); // use png, gif or bmp because of compression
 		// testGetCountRedOverValue(250);
 		// testSetRedToHalfValueInTopHalf();
-		 testClearBlueOverValue(200);
+		// testClearBlueOverValue(200);
 		// Color avgColor = testGetAverageForColumn(pic, col);// specified column
 		// testDiagonal();
 		// testQuads();
@@ -391,6 +391,8 @@ public class PictureTester {
 	 */
 	private static void testFixUnderwater() {
 		Picture pic = new Picture("water.jpg");
+		pic.explore();
+		pic.fixUnderwater();
 		pic.explore();
 	}
 
