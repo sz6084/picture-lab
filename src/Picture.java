@@ -1,10 +1,4 @@
-import java.awt.*;
-import java.awt.font.*;
-import java.awt.geom.*;
 import java.awt.image.BufferedImage;
-import java.text.*;
-import java.util.*;
-import java.util.List; // resolves problem with java.awt.List and java.util.List
 
 /**
  * A class that represents a picture. This class inherits from
@@ -278,11 +272,24 @@ public class Picture extends SimplePicture {
 
     public void setRedToHalfValueInTopHalf() {
         Pixel[][] pixels = this.getPixels2D(); // Defines new Pixel 2D array and gets the 2D array
-        Pixel pixel = null; // defines Pixel variable of type Pixel as null
+        Pixel pixel = null; // defines Pixel variable initially as null
         for (int row = 0; row < pixels.length/2; row++) { // loops through Pixel rows
             for (int col = 0; col < pixels[0].length; col++) { // loops through Pixel columns
                 pixel = pixels[row][col]; // sets the pixel to the current array element
                 pixel.setRed(pixel.getRed()/2);
+            } // ends inner for loop
+        } // ends outer for loop
+    }
+
+    public void clearBlueOverValue(int i) {
+        Pixel[][] pixels = this.getPixels2D(); // Defines new Pixel 2D array and gets the 2D array
+        Pixel pixel = null; // defines Pixel variable initially as null
+        for (int row = 0; row < pixels.length/2; row++) { // loops through Pixel rows
+            for (int col = 0; col < pixels[0].length; col++) { // loops through Pixel columns
+                pixel = pixels[row][col]; // sets the pixel to the current array element
+                if(pixel.getBlue()>i) {
+                    pixel.setBlue(0);
+                }
             } // ends inner for loop
         } // ends outer for loop
     }

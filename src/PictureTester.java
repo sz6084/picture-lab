@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.util.ArrayList;
 
 /**
  * This class contains class (static) methods that will help you test the
@@ -41,8 +40,8 @@ public class PictureTester {
 		// testChromakey();
 		// testEncodeAndDecode(); // use png, gif or bmp because of compression
 		// testGetCountRedOverValue(250);
-		 testSetRedToHalfValueInTopHalf();
-		// testClearBlueOverValue(200);
+		// testSetRedToHalfValueInTopHalf();
+		 testClearBlueOverValue(200);
 		// Color avgColor = testGetAverageForColumn(pic, col);// specified column
 		// testDiagonal();
 		// testQuads();
@@ -180,7 +179,7 @@ public class PictureTester {
 		swan.explore();
 		swan.edgeDetection(10);// bigger number means fewer edges
 		swan.explore();
-		swan.write("swan outline.jpg");// writes the new picture to a new file
+		swan.write("simages/swan outline.jpg");// writes the new picture to a new file
 	}
 
 	/** Method to test mirrorVertical */
@@ -251,7 +250,11 @@ public class PictureTester {
 	// so for this one, any pixels that have blue over a certain value are set
 	// to no blue at all. Or for a different effect, have those pixels set to black.
 	private static void testClearBlueOverValue(int i) {
-
+		Picture beach = new Picture("images/beach.jpg");
+		beach.explore();
+		beach.clearBlueOverValue(i);
+		beach.explore();
+		beach.write("simages/beach clearBlueOverValue.jpg");// writes the new picture to a new file
 	}
 
 	// goes to each pixel in the top half and cuts the red component in half
@@ -261,7 +264,7 @@ public class PictureTester {
 		selfie.explore();
 		selfie.setRedToHalfValueInTopHalf();
 		selfie.explore();
-		selfie.write("selfie redToHalfValueInTopHalf.jpg");// writes the new picture to a new file
+		selfie.write("simages/selfie redToHalfValueInTopHalf.jpg");// writes the new picture to a new file
 	}
 
 	// displays the number of pixels in the pic that have a red component

@@ -1,6 +1,5 @@
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import java.util.Properties;
 import java.io.*;
 import java.net.*;
   
