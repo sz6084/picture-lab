@@ -313,7 +313,6 @@ public class Picture extends SimplePicture {
                 pixelObj.setBlue(newBlue);
             }
         }
-
     }
 
 } // this } is the end of class Picture, put all new methods before this

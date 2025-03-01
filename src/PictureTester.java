@@ -25,10 +25,10 @@ public class PictureTester {
 		// testKeepOnlyRed();
 		// testKeepOnlyGreen();
 		// testNegate();
-		// testGrayscale();
+		 testGrayscale();
 		// testEdgeDetection();
 		// testFaceDetect();
-		 testFixUnderwater();
+		// testFixUnderwater();
 		// testMirrorVertical();
 		// testMirrorTemple();
 		// testMirrorArms();
@@ -154,7 +154,6 @@ public class PictureTester {
 		scenic.explore();
 		scenic.negate();
 		scenic.explore();
-
 	}
 
 	/**
@@ -162,12 +161,16 @@ public class PictureTester {
 	 * to the Picture class.
 	 */
 	private static void testGrayscale() {
-		Picture swan = new Picture("swan.jpg");
-		// write this method in Picture class
-		//swan.explore(); // before
-		swan.grayScale();
-		swan.explore();
-
+		Picture selfie = new Picture("images/selfie.jpg");
+		Picture scenic = new Picture("images/scenic.jpg");
+		// selfie
+		selfie.explore(); // before
+		selfie.grayScale();
+		selfie.explore(); // after
+		// scenic
+		scenic.explore(); // before
+		scenic.grayScale();
+		scenic.explore(); // after
 	}
 
 	/** Method to test edgeDetection */
